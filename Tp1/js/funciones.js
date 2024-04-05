@@ -1,8 +1,8 @@
 function suma(num){
     if (num>10) {
-        alert ("Es mayor que " + num)
+        alert ( num + " Es mayor ")
     } 
     if (num<10) {
-        alert ("Es menor que " + num)
+        alert ( num + " Es menor ")
     }
 }

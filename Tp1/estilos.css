@@ -1,0 +1,17 @@
+.contein {
+    text-align: center;
+}
+
+p{
+    font-size: 30px;
+}
+
+body{
+    background-color: rgba(37, 67, 150, 0.616);
+}
+
+.contein {
+    border-style: none;
+    background-color: rgb(88, 170, 202);
+
+}
