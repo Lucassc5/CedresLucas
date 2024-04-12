@@ -8,6 +8,7 @@ function Personajes(){
             
             infop.innerHTML = `
             <div class = "box"> 
+                <h2 class="texto">El nombre del personaje es </h2> 
                 <h2 class="name">${data.name}</h2>
             </div> 
 
@@ -21,6 +22,13 @@ function Personajes(){
             console.error ('Error:',error);
         });
 }
+
+
+
+
+
+
+
 /*const personaje = {
     "id":140,
     "name":"Genital Washer",
