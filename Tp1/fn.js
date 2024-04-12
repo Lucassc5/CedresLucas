@@ -13,4 +13,4 @@ console.log ($array [i]);
     if (fruta == 'manzana') {               //si pongo = asigno, pero si pongo == comparo
         console.log (fruta);
     }
-}
+} */
