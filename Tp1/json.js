@@ -1,3 +1,26 @@
+function Personajes(){
+    const idapi = document.getElementById ("idapi").value;
+    fetch(`https://rickandmortyapi.com/api/character/${idapi}`)
+        .then (res => res.json())
+        .then (data => {
+                const infop = document.getElementById("infop");
+ 
+            
+            infop.innerHTML = `
+            <div class = "box"> 
+                <h2 class="name">${data.name}</h2>
+            </div> 
+
+            <div class="imagen">
+               <img src="${data.image}" alt="imagen"> 
+            </div>
+            `;
+        })
+        
+        .catch (error => {
+            console.error ('Error:',error);
+        });
+}
 /*const personaje = {
     "id":140,
     "name":"Genital Washer",
@@ -47,26 +70,3 @@ console.log (
    //<div id ="personaje"> </div>
    //document.getElementById("personaje").innerHTML = "El personaje " + personaje.name + " esta " + personaje.status; 
 
-function Personajes(){
-    const idapi = document.getElementById ("idapi").value;
-    fetch(`https://rickandmortyapi.com/api/character/${idapi}`)
-        .then (res => res.json())
-        .then (data => {
-                const infop = document.getElementById("infop");
- 
-            
-            infop.innerHTML = `
-            <div class = "box"> 
-                <h2 class="name">${data.name}</h2>
-            </div> 
-
-            <div class="imagen">
-               <img src="${data.image}" alt="imagen"> 
-            </div>
-            `;
-        })
-        
-        .catch (error => {
-            console.error ('Error:',error);
-        });
-}
