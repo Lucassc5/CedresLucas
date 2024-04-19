@@ -5,39 +5,59 @@ function Personajes() {
         .then (res => res.json())
         .then (data => {
 
-            const dato1= data[0];
-            const dato2= data[1]; 
+            console.log (data.res);
+            
+            if (idp1 == idp2){
+                let dato1= data[0];
+                const infop1 = document.getElementById('infop1');
+                infop1.innerHTML = `
+                    <h2>${dato1.name}</h2>
+                    <p>Genero: ${dato1.gender}</p>
+                    <img src="${dato1.image}" alt="${dato1.name}">
+                `;
+    
+                const infop2 = document.getElementById('infop2');
+                
+                let dato2 = data[0]; 
+                infop2.innerHTML = `
+                    <h2>${dato2.name}</h2>
+                    <p>Genero:${dato2.gender}</p>
+                    <img src="${dato2.image}" alt="${dato2.name}">
+                `;
 
-            console.log (data.res); 
+            } else {
 
-            const infop1 = document.getElementById('infop1');
-            infop1.innerHTML = `
+                let dato1= data[0];
+
+                const infop1= document.getElementById("infop1");
+                infop1.innerHTML = `
                 <h2>${dato1.name}</h2>
                 <p>Genero: ${dato1.gender}</p>
                 <img src="${dato1.image}" alt="${dato1.name}">
-            `;
-            let gen1 = (dato1.gender); 
+                `;
 
+                let dato2 = data[1];
 
-            const infop2 = document.getElementById('infop2');
-            infop2.innerHTML = `
+                const infop2 = document.getElementById("infop2");
+                infop2.innerHTML = `
                 <h2>${dato2.name}</h2>
                 <p>Genero:${dato2.gender}</p>
                 <img src="${dato2.image}" alt="${dato2.name}">
-            `;
-            let gen2 = (dato2.gender);
+                `;
+            }
+           
 
-
-
-            const genero = document.getElementById('genero');
-        
-            if (gen1 == gen2){
-            igenero.innerHTML = '<img src= "correcto.png">';    
-            } 
-            else {
-            igenero.innerHTML= '<img src= "incorrecto.png">';
-            }  
-
+            if (data[0].gender == data[1].gender){
+                const igenero = document.getElementById("igenero");
+                igenero.innerHTML= `
+                <img src="correcto.png">
+                `
+            }else {
+                const igenero = document.getElementById("igenero");
+                igenero.innerHTML= `
+                <img src="incorrecto.png">
+                `
+            }
 
         })
 
