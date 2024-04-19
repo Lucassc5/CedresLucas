@@ -1,0 +1,12 @@
+html {
+    text-align: center;
+}
+
+
+#map {
+    position: relative;
+    height: 400px;
+    width: 400px;
+}
+
+
