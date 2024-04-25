@@ -10,7 +10,8 @@ function buscarusuario() {
             let longitude= data.results[0].location.coordinates.longitude;
 
             userInfo.innerHTML= `
-                <p><h1>Nombre:</h1>${data.results[0].name.first} ${data.results[0].name.last}</p>
+                <h1>Nombre y Apellido:</h1>
+                <h2>${data.results[0].name.first} ${data.results[0].name.last}</h2>
                 <img src="${data.results[0].picture.large}">
                 <p><h1>Latitude:</h1> ${data.results[0].location.coordinates.latitude}</p>
                 <p><h1>Longitude:</h1>${data.results[0].location.coordinates.longitude}</p>
