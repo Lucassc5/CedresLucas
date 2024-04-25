@@ -5,7 +5,9 @@ function buscarusuario() {
         .then(data => {
 
             const userInfo = document.getElementById('userInfo');
-            console.log(data);
+        
+            let latitude= data.results[0].location.coordinates.latitude;
+            let longitude= data.results[0].location.coordinates.longitude;
 
             userInfo.innerHTML= `
                 <p><h1>Nombre:</h1>${data.results[0].name.first} ${data.results[0].name.last}</p>
@@ -13,8 +15,14 @@ function buscarusuario() {
                 <p><h1>Latitude:</h1> ${data.results[0].location.coordinates.latitude}</p>
                 <p><h1>Longitude:</h1>${data.results[0].location.coordinates.longitude}</p>
             `;
-            map(data.results[0].location.coordinates.latitude, data.results[0].location.coordinates.longitude);
-            document.getElementById('user-info').innerHTML = userInfo;
+
+            map(latitude,longitude);
+          
+
+            container = L.DomUtil.get('map');
+        if (container != null) {
+            container._leaflet_id = null;
+        } 
         })
         .catch(error => {
             console.error('Error', error);
@@ -30,4 +38,6 @@ function map(latitude,longitude) {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+    var marker = L.marker([latitude,longitude]).addTo(map);
 } 
