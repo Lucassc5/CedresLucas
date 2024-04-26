@@ -18,22 +18,24 @@ function buscarusuario() {
             `;
 
             map(latitude,longitude);
-          
 
             container = L.DomUtil.get('map');
         if (container != null) {
             container._leaflet_id = null;
         } 
         })
+
         .catch(error => {
-            console.error('Error', error);
+            document.getElementById('error').innerHTML = 
+            `<p>${error}</p>`;
         });
+
 }
 
 
 function map(latitude,longitude) {
 
-    var map = L.map('map').setView([latitude,longitude], 13);
+    var map = L.map('map').setView([latitude,longitude], 4);
     
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -41,4 +43,4 @@ function map(latitude,longitude) {
     }).addTo(map);
 
     var marker = L.marker([latitude,longitude]).addTo(map);
-} 
+}

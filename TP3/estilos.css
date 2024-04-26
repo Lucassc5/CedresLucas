@@ -19,5 +19,11 @@
 }
 
 button {
-    
+    background-color: white;
+    color: black;
+}
+
+button:hover{
+    background-color: green;
+    color: blueviolet;
 }
