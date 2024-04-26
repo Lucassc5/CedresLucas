@@ -1,0 +1,29 @@
+* {
+    text-align: center;
+}
+
+#map { 
+    height: 400px; 
+    width: 400px;
+    margin-left: 900px;
+    margin-top: -450px;
+    border-radius: 5px;
+    border: 5px solid rgb(148, 148, 231);
+}
+
+#userInfo {
+        width: 800px;
+        height: 500px;
+        border: 5px solid rgb(28, 32, 92);     
+        border-radius: 9px;
+}
+
+button {
+    background-color: white;
+    color: black;
+}
+
+button:hover{
+    background-color: green;
+    color: blueviolet;
+}
