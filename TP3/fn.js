@@ -15,7 +15,7 @@ function buscarusuario() {
                 <img src="${data.results[0].picture.large}">
                 <p><h1>Latitude:</h1> ${data.results[0].location.coordinates.latitude}</p>
                 <p><h1>Longitude:</h1>${data.results[0].location.coordinates.longitude}</p>
-            `;
+                `;  
 
             map(latitude,longitude);
 

@@ -1,9 +1,8 @@
 let val =[];
 
 function buscarmayor() {
-    let valor= document.getElementById('numId').value;
 
-    val.push(valor);
+    val.push(Number(document.getElementById('numId').value));
     console.log(val)
 
     if (val.length ==10) {
@@ -16,18 +15,59 @@ function buscarmayor() {
                 numeroMax= val[i];
             } 
         } 
-        console.log(numeroMax);
+        console.log('num max', numeroMax);
+        buscarpersonaje(numeroMax);
     }
+
 }
 
-function buscarpersonaje() {
-    URL ('https://rickandmortyapi.com/api/character/')
-    fetch (URL)
+function buscarpersonaje(numeroMax) {
+
+    fetch (`https://rickandmortyapi.com/api/character/${numeroMax}`)
     .then(res => res.json())
-    .then(data => {
+    .then(datarym => {
 
-        const persona = Document.getElementById('infop');
+        console.log(datarym)
 
+    fetch (`https://randomuser.me/api/`)
+    .then(res => res.json())
+    .then(dataru => {
+
+        console.log(dataru)
+
+        if (datarym.species == 'Human') {
+            
+            const rymp = document.getElementById('rymp');
+            
+            rymp.innerHTML= `
+            <img src="${datarym.image}">
+            
+            <img src="${dataru.results[0].picture.large}">
+            `;
+        }
+
+        if (datarym.species != 'Human') {
+            
+            const rymp = document.getElementById('rymp');
+
+            rymp.innerHTML= `
+            <img src="${dataru.results[0].picture.large}">
+            <p>${dataru.results[0].name.first}</p>
+            <p>${dataru.results[0].name.last}</p>
+            <p>${dataru.results[0].email}</p>
+            <p>${dataru.results[0].age}</p>
+            `;
+        }
+
+    })
+
+
+    .catch (error => {
+        document.getElementById('error').innerHTML= `
+        <p>${error}</p>
+        `;
+        
+    });    
 
     })
 }
