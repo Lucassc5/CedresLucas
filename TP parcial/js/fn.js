@@ -3,6 +3,7 @@ let val =[];
 function buscarmayor() {
 
     val.push(Number(document.getElementById('numId').value));
+    document.getElementById('numId').value = '';
     console.log(val)
 
     if (val.length ==10) {
@@ -15,7 +16,7 @@ function buscarmayor() {
                 numeroMax= val[i];
             } 
         } 
-        console.log('num max', numeroMax);
+        console.log('Numero max:', numeroMax);
         buscarpersonaje(numeroMax);
     }
 
