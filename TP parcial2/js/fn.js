@@ -16,21 +16,17 @@ function buscarpersonaje1() {
         }
         else {valor1.push(NumeroId1)
         }
-        if (valor2.length == 3) {
-            document.getElementById('NumeroId1').value = '';
-        }   
+         
         if (valor1.length == 3) {
         document.getElementById('NumeroId1').disabled = true;
         alert('Se ingresaron los 3 numeros')
         }
-        console.log(valor1);
+        console.log('Los valores del array 1 son: ' +valor1);
     }
     else {
         alert('No es valido')
     }
 }
-    
-
 
 function buscarpersonaje2() {
     
@@ -42,15 +38,12 @@ function buscarpersonaje2() {
         alert('Variable ya ingresada')   
         }
         else {valor2.push(NumeroId2)
-        }
-        if (valor2.length == 3) {
-            document.getElementById('NumeroId1').value = '';
-        }        
+        }       
         if (valor2.length == 3) {
         document.getElementById('NumeroId2').disabled = true;
         alert('Se ingresaron los 3 numeros')
         }
-        console.log(valor2);
+        console.log('Los valores del array 2 son: ' +valor2);
     }
 
 

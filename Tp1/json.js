@@ -3,33 +3,8 @@ function Personajes(){
     fetch(`https://rickandmortyapi.com/api/character/${idapi}`)
         .then (res => res.json())
         .then (data => {
-                const infop = document.getElementById("infop");
- 
-            
-            infop.innerHTML = `
-            <div class = "box"> 
-                <h2 class="texto">El nombre del personaje es </h2> 
-                <h2 class="name">${data.name}</h2>
-            </div> 
-
-            <div class="imagen">
-               <img src="${data.image}" alt="imagen"> 
-            </div>
-            `;
-        })
-        
-        .catch (error => {
-            console.error ('Error:',error);
-        });
-}
-
-
-
-
-
-
-
-/*const personaje = {
+  
+const personaje = {
     "id":140,
     "name":"Genital Washer",
     "status":"Alive",
@@ -51,12 +26,33 @@ function Personajes(){
     "url":"https://rickandmortyapi.com/api/character/140",
     "created":"2017-12-27T18:47:44.566Z"
 
-} */
+} 
+document.getElementById("personaje").innerHTML = "El personaje " + personaje.name + " esta " + personaje.status; 
 
-//console.log (personaje);
+})
+}
 
+
+/*            const infop = document.getElementById("infop");
  
-//console.log (personaje.name);
+            
+            infop.innerHTML = `
+            <div class = "box"> 
+                <h2 class="texto">El nombre del personaje es </h2> 
+                <h2 class="name">${data.name}</h2>
+            </div> 
+
+            <div class="imagen">
+               <img src="${data.image}" alt="imagen"> 
+            </div>
+            `;
+        })
+        
+        .catch (error => {
+            console.error ('Error:',error);
+        });
+}
+
 
 /*    const jugador = {
     "nombre": "nahuel",
@@ -76,5 +72,3 @@ console.log (
 
    // document.getElementById("result").innerHTML = "hola";
    //<div id ="personaje"> </div>
-   //document.getElementById("personaje").innerHTML = "El personaje " + personaje.name + " esta " + personaje.status; 
-
