@@ -1,52 +1,59 @@
 let valor1=[];
 let valor2=[];
+const menor = 1;
+const mayor = 826;
+
 
 function buscarpersonaje1() {
 
-    const num1 = document.getElementById('NumeroId1').value;
+    const NumeroId1 = document.getElementById('NumeroId1').value;
 
-    if (valor1.length < 4) {
-        if (valor1.length < 0 || valor1.length > 827) {
-        alert('El numero ingresado es invalido');
-        }
-        else if (valor1.includes(num1)) {
-        alert('Numero ya ingresado')  
-        }
-        else {
-        valor1.push(num1);
-        document.getElementById('NumeroId1').value = '';
-        console.log(valor1) 
-        }   
-    }
-    if (valor1.length == 3) {
-        document.getElementById('NumeroId1').disabled = true;
-        console.log(valor1)
-    }
     
+    if (NumeroId1 >= menor && NumeroId1 <= mayor) {
+
+        if (valor1.includes(NumeroId1)) {
+        alert('Variable ya ingresada')   
+        }
+        else {valor1.push(NumeroId1)
+        }
+        if (valor2.length == 3) {
+            document.getElementById('NumeroId1').value = '';
+        }   
+        if (valor1.length == 3) {
+        document.getElementById('NumeroId1').disabled = true;
+        alert('Se ingresaron los 3 numeros')
+        }
+        console.log(valor1);
+    }
+    else {
+        alert('No es valido')
+    }
 }
+    
+
 
 function buscarpersonaje2() {
     
-    const num2 = document.getElementById('NumeroId2').value;
+    const NumeroId2 = document.getElementById('NumeroId2').value;
 
-    if (valor2.length < 4) {
-        if (valor2.length < 0 || valor2.length > 827) {
-        alert('El numero ingresado es invalido');
+    if (NumeroId2 >= menor && NumeroId2 <= mayor) {
+
+        if (valor2.includes(NumeroId2)) {
+        alert('Variable ya ingresada')   
         }
-        else if (valor2.includes(num2)) {
-        alert('Numero ya ingresado')  
+        else {valor2.push(NumeroId2)
         }
-        else {
-        valor2.push(num2);
-        document.getElementById('NumeroId2').value = '';
-        console.log(valor2)
-    }
-    }
-    if (valor2.length == 3) {
+        if (valor2.length == 3) {
+            document.getElementById('NumeroId1').value = '';
+        }        
+        if (valor2.length == 3) {
         document.getElementById('NumeroId2').disabled = true;
-        console.log(valor2)
+        alert('Se ingresaron los 3 numeros')
+        }
+        console.log(valor2);
     }
-    
+
+
     if (valor1.length == 3 && valor2.length == 3) {
         mostrarpersonajes()
     }
@@ -86,4 +93,10 @@ fetch (`https://rickandmortyapi.com/api/character/${personajes}`)
     }        
     }
     })
+
+    .catch(error => {
+        document.getElementById('error').innerHTML = 
+        `<p>${error}</p>`;
+    });
+
 }
