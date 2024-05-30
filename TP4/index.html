@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
 
-    <div>
-    <button onclick="consaldo()">Consultar</button>
+<h1> Banco Nación </h1>
+
+    <div class="cliente" id="cliente" style="display: block;">
+        <input id="nombre" type="text">
+        <input id="apellido" type="text">
+        <input id="fecha_nacimiento" type="date">
+        <button onclick="enviardatos()">Ingresar al Banco </button>
     </div>
+
+<section class="boxes" id="boxes" style="display: none;">
+    <div><button onclick="consaldo()">Consultar</button></div>
 
     <div>
         <input id="ingresarsaldo" type="number">
@@ -18,11 +27,15 @@
     
     <div>
         <input id="retirarsaldo" type="number" >
-        <button onclick="retirar()">retirar</button>
-</div>
+        <button onclick="retirar()">Retirar</button>
+    </div>
+</section>
+    
 
 <div id="mostrar"></div>
 
 </body>
 <script src="tp.js"></script>
 </html>
+
+

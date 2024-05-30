@@ -15,7 +15,7 @@ getedad(){
     const diaActual = fecha.getDate();
 
     const edad = anoActual - this.fecha_nacimiento.getFullYear();
-
+    
         if (mesActual < this.fecha_nacimiento.getMonth() + 1 || 
             (mesActual === this.fecha_nacimiento.getMonth() + 1 &&
              diaActual < this.fecha_nacimiento.getDate())) 
@@ -45,11 +45,14 @@ constructor(nombre, apellido, fecha_nacimiento, saldo, num_cuenta){
 
     depositar(ingresarsaldo){  //hasta $1000
 
-        if (ingresarsaldo < 0) {
-            throw new Error ('Ingresar valor mayor a 0'); 
+        if (ingresarsaldo <= 0) {
+            return alert ('Ingresar valor mayor a 0'); 
+            //throw new Error ('Ingresar valor mayor a 0'); 
+
         }
-        if (ingresarsaldo > 1000) {
-            throw new Error ('Te excediste rey'); 
+        if (ingresarsaldo >= 1000) {
+            return alert ('Te excediste rey'); 
+            //throw new Error ('Te excediste rey'); 
         }
 
         console.log("Valor ingresado: ", ingresarsaldo);
@@ -63,58 +66,63 @@ constructor(nombre, apellido, fecha_nacimiento, saldo, num_cuenta){
     retirar(retirarsaldo){   //solo si el saldo es suficiente
 
         if (retirarsaldo < 0 ) {
-            throw new Error ('Ingresar valor mayor a 0'); 
+            return alert ('Ingresar valor mayor a 0');
+            //throw new Error ('Ingresar valor mayor a 0'); 
         }
         if (retirarsaldo > this.saldo) {
-            throw new Error ('Saldo insuficiente');  
+            return alert ('Saldo insuficiente rey');
+            //throw new Error ('Saldo insuficiente');  
         }
 
         this.saldo -= Number(retirarsaldo);
         console.log("saldo retirado: ", this.saldo)
         return  this.saldo;
     }
-
 }
 
+const nuevocliente = new Cliente (nombre, apellido, new Date (fecha_nacimiento),10,1);
 
+function enviardatos(){
 
-let cuenta1 = new Cuenta_Bancaria ('Lucas','Cedres',new Date (2002,8,25),10,1);
+    
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
 
-let nuevocliente = new Cliente ('Lucas','Cedres','2002');
+    let cuenta1 = new Cuenta_Bancaria (nombre, apellido, new Date(fecha_nacimiento),10,1);
 
+    console.log(nombre, apellido, fecha_nacimiento);
+    
+    
+    if (cuenta1.getedad() < 18) {
+        return alert('Debe tener al menos 18 años para tener una cuenta bancaria.');
+    }
+    if (fecha_nacimiento || nombre || apellido  == '') {
+        return alert('Por favor, complete todos los campos.'); // Detener la ejecución de la función si faltan datos
+    }
+    else {
+        document.getElementById('boxes').style.display = 'block';
+        document.getElementById('cliente').style.display = 'none';
+    }
+}
 
-const saldo = cuenta1.consultar();
+const cuenta1 = new Cuenta_Bancaria (nombre, apellido, new Date (fecha_nacimiento),10,1);
+
 
 function consaldo(){
     cuenta1.consultar();
-
-    if (cuenta1.getedad() < 18) {
-        alert('Debe tener al menos 18 años para tener una cuenta bancaria.');
-        return; // no devuelve ningun valor
-    }
-    else {
     mostrar.innerHTML = `<p> El saldo actual es:  ${cuenta1.consultar()} </p>`
-    }
+    
 }
 
 function ingresar(){
 
    const ingresarsaldo = document.getElementById('ingresarsaldo').value;
-   if (cuenta1.getedad() < 18) {
-    alert('Debe tener al menos 18 años para tener una cuenta bancaria.');
-    return;
-}
    cuenta1.depositar(ingresarsaldo);
-
 }
 
 function retirar(){
 
     const retirarsaldo = document.getElementById('retirarsaldo').value;
-    if (cuenta1.getedad() < 18) {
-        alert('Debe tener al menos 18 años para tener una cuenta bancaria.');
-        return;
-    }
     cuenta1.retirar(retirarsaldo);
-
 }
