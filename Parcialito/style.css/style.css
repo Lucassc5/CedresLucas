@@ -1,0 +1,20 @@
+#mostrarpersonas {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#mostrarMale, #mostrarFemale{
+    flex: 1; 
+    margin: 0 10px; 
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#mostrarFemale {
+    background-color: violet;
+}
+
+#mostrarMale{
+    background-color: lightblue;
+}
