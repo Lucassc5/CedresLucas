@@ -15,6 +15,9 @@ function mostrarrym() {
     `
     });
     })
+
+    .catch(error => {console.error('Error ', error.message)
+        document.getElementById("error").innerHTML = [error.message]});
 }
 
 
@@ -41,4 +44,6 @@ function mostrarrandom(){
         `
     }
 })
+        .catch(error => {console.error('Error ', error.message)
+        document.getElementById("error").innerHTML = [error.message]});
 }
