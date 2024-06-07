@@ -1,49 +1,86 @@
-function mostrarrym() {
-    fetch(`https://rickandmortyapi.com/api/character/566,67,50`)
-    .then(Response => Response.json())
-    .then(data => {
+/*
+Mostrar 
+Name: RYM
+Age: RU
+Gender: RYM
+City: RU
+*/ 
+
+
+
+const error = navigator.onLine;
+
+function mostrar() {
+    if (error) {
         
-    const array = [];
+        fetch(`https://rickandmortyapi.com/api/character/566,50,67`)
+        .then(Response => Response.json())
+        .then(datarym => {
 
-    data.forEach(personaje => {
-    array.push(personaje.name);
-    
-    let arrayordenado = array.sort();
-    console.log("array ordenado por abcedario: " + arrayordenado)
-    mostrarmayor.innerHTML = `
-    <p>${arrayordenado[2]}</p>
-    `
-    });
-    })
+            fetch(`https://randomuser.me/api/?results=3`)
+            .then (res => res.json())
+            .then (dataru => {
 
-    .catch(error => {console.error('Error ', error.message)
-        document.getElementById("error").innerHTML = [error.message]});
-}
+            var mayor = 0;    
+            var arrayru = [];
 
+                for (let i = 0; i < 3; i++) {
+                    console.log(dataru.results[i].dob.age)
 
-function mostrarrandom(){
-    fetch(`https://randomuser.me/api/?results=3`)
-    .then (res => res.json())
-    .then (data => {
-    
-    var mayor = 0;    
-    var array = [];
+                    if (dataru.results[i].dob.age >= mayor) {
 
-    for (let i = 0; i < 3; i++) {
-        array.push(data.results[i].dob.age);
-        console.log(array[i]);
-    
-        for (let i = 0; i < 3; i++) {
+                    mayor = dataru.results[i].dob.age;
 
-            if (array[i] > mayor) {
-            mayor = array[i];
-            }
-        }
-        mostrarmayoredad.innerHTML = `
-        <p>La persona de mayor edad tiene: ${mayor}</p>
-        `
+                    arrayru[0] = dataru.results[i];
+                    }
+                }
+                mostrarmayoredad.innerHTML = `
+                <h1>La persona de mayor edad tiene: ${mayor}</h1>
+                `
+                    const array = [];
+                    const arrayRYM = [];
+
+                    for (let i = 0; i < 3; i++) {
+
+                        array.push(datarym[i].name)
+
+                        array.sort();   
+
+                        arrayRYM[0] = datarym[i];
+
+                    }
+                    console.log("array ordenado por abcedario: " + array)
+                    console.log("datos del mayor ",arrayRYM);
+                       
+                    mostrarmayor.innerHTML = `
+                    <h1>${array[2]}</h1>
+                    ` 
+
+                    mostrarPjs(arrayru, arrayRYM)
+            })         
+        })   
+    }else{
+        alert("No estas conectado a internet")
+        mostrarerror.innerHTML = `
+        <h1>No estas conectado a internet putita</h1>`
     }
-})
-        .catch(error => {console.error('Error ', error.message)
-        document.getElementById("error").innerHTML = [error.message]});
 }
+
+
+function mostrarPjs(arrayru, arrayRYM) {
+
+    pjRM.innerHTML = `
+    <p> name: ${arrayRYM[0].name}</p>
+    <p> gender: ${arrayRYM[0].gender}</p>
+    `
+    
+    pjRU.innerHTML = `
+    <p> age: ${arrayru[0].dob.age}</p>
+    <p> city: ${arrayru[0].location.city}</p>
+    `
+}
+
+
+
+/*.catch(error => {console.error('Error ', error.message)
+            document.getElementById("error").innerHTML = [error.message]});*/

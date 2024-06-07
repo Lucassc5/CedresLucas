@@ -91,8 +91,7 @@ function enviardatos(){
 
     let cuenta1 = new Cuenta_Bancaria (nombre, apellido, new Date(fecha_nacimiento),10,1);
 
-    console.log(nombre, apellido, fecha_nacimiento);
-    
+    console.log(nombre, apellido, fecha_nacimiento);   
     
     if (cuenta1.getedad() < 18) {
         return alert('Debe tener al menos 18 años para tener una cuenta bancaria.');
